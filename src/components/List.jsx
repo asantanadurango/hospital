@@ -1,7 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { actEspera, actAtendidos, actInternos } from "../Actions/createActions";
-import "./styles.css";
+import React from 'react';
+import { connect } from 'react-redux';
+import { actEspera, actAtendidos, actInternos } from '../Actions/createActions';
+import './styles.css';
 
 function Lista({ valuesList, listar, atender, internar }) {
 	return (
