@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { actEspera, actAtendidos, actInternos } from '../Actions/createActions';
 import './styles.css';
 
-function Lista({ valuesList, listar, atender, internar }) {
+function Lista({ valuesList, listar, atender, internar, enEsperaLength, atendidosLength, internadosLength }) {
 	return (
 		<div className='container'>
 			<h2 className='w-100'>Hospital La Cura</h2>
 			<div className='divider-bar' />
 			<ul className='w-100'>
-				<h2 className='sub-title w-100'>Pacientes en lista de espera ({valuesList[0].length}) : </h2>
+				<h2 className='sub-title w-100'>Pacientes en lista de espera ({enEsperaLength}) : </h2>
 				{valuesList[0].map((value) => (
 					<li key={Math.random()}>
 						<h3>{value}</h3>
@@ -36,7 +36,7 @@ function Lista({ valuesList, listar, atender, internar }) {
 			</ul>
 
 			<ul>
-				<h2 className='sub-title'>Pacientes atendidos ({valuesList[1].length}) : </h2>
+				<h2 className='sub-title'>Pacientes atendidos ({atendidosLength}) : </h2>
 				{valuesList[1].map((value) => (
 					<li key={Math.random()}>
 						<h3>{value}</h3>
@@ -63,7 +63,7 @@ function Lista({ valuesList, listar, atender, internar }) {
 			</ul>
 
 			<ul>
-				<h2 className='sub-title'>Pacientes internados ({valuesList[2].length}): </h2>
+				<h2 className='sub-title'>Pacientes internados ({internadosLength}): </h2>
 				{valuesList[2].map((value) => (
 					<li key={Math.random()}>
 						<h3>{value}</h3>
@@ -94,9 +94,9 @@ function Lista({ valuesList, listar, atender, internar }) {
 
 const mapStateToProps = (state) => {
 	return {
-		enEspera: state.pacientesReducers.enLista,
-		atendidos: state.pacientesReducers.atendidos,
-		internados: state.pacientesReducers.internados,
+		enEsperaLength: state.pacientesReducers.EnListaDeEspera.length,
+		atendidosLength: state.pacientesReducers.atendidos.length,
+		internadosLength: state.pacientesReducers.internados.length,
 		valuesList: Object.values(state.pacientesReducers),
 	};
 };
